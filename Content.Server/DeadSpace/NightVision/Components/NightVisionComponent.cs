@@ -1,0 +1,25 @@
+using Content.Shared.DeadSpace.NightVision;
+using Robust.Shared.Audio;
+using Robust.Shared.Prototypes;
+
+namespace Content.Server.DeadSpace.Components.NightVision;
+
+[RegisterComponent]
+public sealed partial class NightVisionComponent : SharedNightVisionComponent
+{
+    [DataField]
+    public EntProtoId ActionToggleNightVision = "ActionToggleNightVision";
+
+    [ViewVariables(VVAccess.ReadOnly), DataField]
+    public EntityUid? ActionToggleNightVisionEntity;
+
+    [ViewVariables(VVAccess.ReadOnly)]
+    public float? RemainingTime = null;
+
+    public NightVisionComponent(Color? color = null, SoundSpecifier? activateSound = null, bool animation = true)
+    {
+        Color = color ?? new Color(80f / 255f, 220f / 255f, 70f / 255f, 0.1f);
+        ActivateSound = activateSound;
+        Animation = animation;
+    }
+}
